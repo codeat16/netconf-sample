@@ -1,5 +1,22 @@
-http://csr1kv/restconf/api/config/native/ip/route
-###
+### GET http://csr1kv/restconf/api/config/native/ip/route?deep
+{
+  "ned:route": {
+    "ip-route-interface-forwarding-list": [
+      {
+        "prefix": "0.0.0.0",
+        "mask": "0.0.0.0",
+        "fwd-list": [
+          {
+            "fwd": "192.168.1.1"
+          }
+        ]
+      }
+    ],
+    "static": {}
+  }
+}
+
+### PATCH http://csr1kv/restconf/api/config/native/ip/route
 {
   "ned:route": {
     "ip-route-interface-forwarding-list": [
@@ -42,3 +59,21 @@ http://csr1kv/restconf/api/config/native/ip/route
     ]
   }
 }
+
+## show run | inc route 
+
+### PUT http://csr1kv/restconf/api/config/native/interface/Loopback/100
+{
+  "ned:Loopback": {
+    "name": 100,
+    "ip": {
+      "address": {
+        "primary": {
+          "address": "100.100.1.1",
+          "mask": "255.255.255.0"
+        }
+      }
+    }
+  }
+}
+
